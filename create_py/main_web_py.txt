@@ -1,0 +1,19 @@
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from conexao.conexao import *
+from dotenv import load_dotenv
+load_dotenv()
+
+
+site = os.getenv("URL_SITE")
+caminho_chrome = os.getenv("PATH_FILE_CHROMEDRIVER")
+options = webdriver.ChromeOptions()
+options.add_argument("headless")
+driver = webdriver.Chrome(executable_path=caminho_chrome)
+driver.get(site)
+driver.maximize_window()

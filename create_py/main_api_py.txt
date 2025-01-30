@@ -1,0 +1,43 @@
+from fastapi import FastAPI, APIRouter
+import sqlalchemy as sa
+import socket  
+import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+load_dotenv("../.env")
+
+hostname=socket.gethostname()
+IPAddr=socket.gethostbyname(hostname)
+
+
+description='''
+API para Clientes, busca por informações do Cliente!
+'''
+
+app = FastAPI(title='Informacoes de Cliente',
+    description=description,
+    version='0.0.1'
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*'],
+    allow_credentials=True,
+    allow_methods=['GET'],
+    allow_headers=['*']
+)
+
+@app.get('/')
+def Cliente():
+    json = {
+        'status': 'ok'
+    }
+    return json
+
+router = APIRouter()
+
+app.include_router(router.router)
+
+if __name__ == "__main__":
+    uvicorn.run(app,host=IPAddr, port=7778)

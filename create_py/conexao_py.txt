@@ -1,0 +1,15 @@
+import os
+import sqlalchemy as sa
+
+def conexao():
+    server   = os.getenv("ADDR_SERVER")
+    database = os.getenv("DB_FUTURA")
+    username = os.getenv("SERVER_USER")
+    password = os.getenv("SERVER_PSSW")
+    driver_sql = os.getenv("DRIVER_PYTHON")
+    port = os.getenv("PORT_SERVER")
+
+    engine = sa.create_engine(f'mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC Driver 17 for SQL Server', connect_args={'connect_timeout': 15})
+    engine = sa.create_engine(f'postgresql+psycopg2://{username}:{password}@{server}:{port}/{database}')
+    
+    return engine
