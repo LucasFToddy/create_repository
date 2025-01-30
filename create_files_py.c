@@ -31,7 +31,7 @@ void	install_lib_py(char *str)
 	system("venv/bin/pip3 freeze > requirements.txt");
 }
 
-int		write_lines(FILE *file, char *file_path)
+void	write_lines(FILE *file, char *file_path)
 {
 	int	fd;
 	char *line;
@@ -60,7 +60,7 @@ int		write_file_py(char *str)
 		file_main = fopen("main.py", "w");
 		if (!file_main)
 			return 0;
-		write_lines(file_main, "/home/toddy/myProject/create_py/main_api_py.txt");
+		write_lines(file_main, "/usr/share/repository_init/create_py/main_api_py.txt");
 		fclose(file_main);
 	}
 	else if (!ft_strcmp("bot-web", str))
@@ -68,7 +68,7 @@ int		write_file_py(char *str)
 		file_main = fopen("main.py", "w");
 		if (!file_main)
 			return 0;
-		write_lines(file_main, "/home/toddy/myProject/create_py/main_web_py.txt");
+		write_lines(file_main, "/usr/share/repository_init/create_py/main_web_py.txt");
 		fclose(file_main);
 	}
 	else
@@ -80,7 +80,7 @@ int		write_file_py(char *str)
 	file_conexao = fopen("conexao/conexao.py", "w");
 	if (!file_conexao)
 		return 0;
-	write_lines(file_conexao, "/home/toddy/myProject/create_py/conexao_py.txt");
+	write_lines(file_conexao, "/usr/share/repository_init/create_py/conexao_py.txt");
 	fclose(file_conexao);
 
 	file_dados = fopen("dados/dados.py","w");
